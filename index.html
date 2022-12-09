@@ -4,55 +4,116 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FlexBox</title>
-    <link rel="icon" href="D:\my webpractice\flexbox\favicon.ico"/>
-    <link rel="stylesheet" href="D:\my webpractice\flexbox\style.css">
-
+    <title>clock</title>
+  
 </head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    *{
+    box-sizing: border-box;
+   
+}
+body{
+    margin: 0;
+    padding: 0;
+    font-family: 'Bebas Neue', cursive;
+    background-position: 300%;
+    background-repeat: no-repeat;
+    
+}
+.container{
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+.hour,.min,.sec,.type,.h{
+    margin-left: 15px;
+    width:20%;
+    height:15%;
+    font-size: 6rem;
+    background-image: linear-gradient(40deg, #4158D0 , #C850C0 , #FFCC70 );
+    -webkit-background-clip: text;
+    background-size: 400%;
+    -webkit-text-fill-color: transparent;
+    animation: back-fun 1s infinite alternate;
+}
+.h{
+    font-size: 6rem;
+}
+h1{
+    text-align: center;
+ letter-spacing: 2px;
+ background-image: linear-gradient(40deg, #4158D0 , #C850C0 , #FFCC70 );
+ -webkit-background-clip: text;
+    background-size: 400%;
+    -webkit-text-fill-color: transparent;
+    animation: back-fun 1s infinite alternate;
+}
+@keyframes back-fun {
+                0%{
+                    background-position: left;
+                }
+                100%{
+                    background-position: right;
+                }
+            }
+</style>
+
 <body>
-    <div class="header">
- <h1>my website</h1>
- <p>with <span>flexible</span>layout</p>
+    <h1>SANAVULLA SHAIK</h1>
+    <div class="container">
+        <span class="hour" id="hour">00</span>
+        <span class="h">:</span>
+        <span class="min" id="min">00</span>
+        <span class="h">:</span>
+        <span class="sec" id="sec">00</span>
+        <span class="type" id="secs">AM</span>
     </div>
+    <script >
+        function clock(){
+    // alert("hello")
+   
+    var dateTime = new Date();
+     var hour = dateTime.getHours();
+     var min = dateTime.getMinutes();
+     var sec = dateTime.getSeconds();
+     
+   
 
-    <div class="link">
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-  <a href="#">Link</a>
-    </div>
-    <div class="row">
-    <div class="side">
-        <h2>About me</h2>
-        <p>photo of me</p>
-        <div class="fakeimg" style="height: 200px">Image</div>
- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum sequi quod dolor.</p>
- <h3>More Text</h3>
- <p>Lorem ipsum dolor sit.</p>
-        <div class="fakeimg" style="height: 60px">Image</div><br>
-        <div class="fakeimg" style="height: 60px">Image</div><br>
-        <div class="fakeimg" style="height: 60px">Image</div>
-    </div>
-    <div class="main">
-        <h2>TITLE HEADING</h2>
-        <h5>Title description, Dec 7, 2017</h5>
-        <div class="fakeimg" style="height:200px;">Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-        <br>
-        <h2>TITLE HEADING</h2>
-        <h5>Title description, Sep 2, 2017</h5>
-        <div class="fakeimg" style="height:200px;">Image</div>
-        <p>Some text..</p>
-        <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
-      </div>
-    </div>
-    
-    <!-- Footer -->
-    <div class="footer">
-      <h2>Footer</h2>
-    </div>
+     if(hour>=12){
+        document.getElementById("secs").innerHTML = "PM";
+     }
+     else{
+        document.getElementById("secs").innerHTML = "AM";
+     }
+     if(hour>12){
+        hour = hour - 12;
+     }
+     if(sec<9){
+        document.getElementById("sec").innerHTML = "0" + sec;
+     }
+     else{
+        document.getElementById("sec").innerHTML = sec;
+     }
+     if(min<9){
+        document.getElementById("min").innerHTML = "0" + min;
+     }
+     else{
+        document.getElementById("min").innerHTML = min;
+     }
+     if(hour>9 && hour<13){
+        document.getElementById("hour").innerHTML = hour;
+     }else{
+        document.getElementById("hour").innerHTML = "0"+hour;
+     }
+     
+     
+     
+   
+}
+setInterval(clock)
 
-    
+    </script>
 </body>
 </html>
